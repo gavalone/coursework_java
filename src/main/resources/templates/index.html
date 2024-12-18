@@ -61,6 +61,26 @@
             margin: 20px 0;
             color: #eeeeee;
         }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+        }
+        footer h5 {
+            font-weight: bold;
+        }
+        footer a {
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .social-buttons a {
+            transition: transform 0.2s;
+        }
+        .social-buttons a:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -245,5 +265,11 @@
         return confirm('Вы уверены, что хотите удалить этот фильм? Это действие нельзя отменить.');
     }
 </script>
+<footer class="bg-dark text-white py-4">
+        <div class="text-center mt-4">
+            <p> Информационная система направлена на бронирование билетов в кинотеатре  |  Разработчик: Ермолаева Диана Евгеньевна</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.example.coursework;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -297,6 +296,7 @@ public class AppController {
     @ResponseBody
     public ResponseEntity<Films> callOpen1() {
         Films films = new Films();
+        if (films.getFilmname()==null) {return ResponseEntity.ok(films);}
         filmsService.save(films);
         return ResponseEntity.ok(films);
     }
@@ -312,6 +312,7 @@ public class AppController {
     @ResponseBody
     public ResponseEntity<Sessions> callOpen3() {
         Sessions sessions = new Sessions();
+        if (sessions.getFilmname()==null) {return ResponseEntity.ok(sessions);}
         sessionsService.save(sessions);
         return ResponseEntity.ok(sessions);
     }

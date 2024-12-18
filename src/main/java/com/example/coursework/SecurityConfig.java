@@ -1,10 +1,8 @@
 package com.example.coursework;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 
 
 @Configuration
@@ -49,23 +46,18 @@ public class SecurityConfig  {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity
-
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(httpForm ->{
                     httpForm.loginPage("/req/login").permitAll();
                     httpForm.defaultSuccessUrl("/", true);
-
                 })
-
                 .logout(logout -> {
-                    logout.logoutUrl("/tologout")  // The endpoint for logout
-                            .logoutSuccessUrl("/"); // Redirects to homepage after logout
+                    logout.logoutUrl("/tologout")
+                            .logoutSuccessUrl("/"); // редирект на главную страницу после выхода
                 })
-
                 .authorizeHttpRequests(registry -> registry
-                        .anyRequest().permitAll()  // Allows access to all URLs without authentication
+                        .anyRequest().permitAll()  // доступ к url без авторизации
                 )
                 .build();
     }
-
 }
