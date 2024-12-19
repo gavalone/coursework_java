@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,14 +14,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 
-
+/**
+ * Сервисный класс для управления пользователями.
+ * Предоставляет методы для выполнения CRUD операций над объектами Myappuser.
+ */
 @Service
 @AllArgsConstructor
 public class MyAppUserService implements UserDetailsService{
 
     @Autowired
     private MyAppUserRepository repository;
-
 
     public Myappuser get(Long id) {
         return repository.findById(id).get();
@@ -31,6 +32,7 @@ public class MyAppUserService implements UserDetailsService{
     public void save(Myappuser myappuser) {
         repository.save(myappuser);
     }
+
     public List<Myappuser> findAll() {
         return repository.findAll();
     }
@@ -40,10 +42,8 @@ public class MyAppUserService implements UserDetailsService{
         Optional<Myappuser> user = repository.findByUsername(username);
         if (user.isPresent()) {
             var userObj = user.get();
-
             Set<GrantedAuthority> authorities = new HashSet<>();
             authorities.add(new SimpleGrantedAuthority("ROLE_" + userObj.getRole()));
-
             return User.builder()
                     .username(userObj.getUsername())
                     .password(userObj.getPassword())

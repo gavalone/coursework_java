@@ -5,10 +5,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
-
+/**
+ * Сущность Sessions - сеасны кинопоказа.
+ * Включает информацию о названии фильма, стоимости билета, времени сеанса и количестве билетов.
+ */
 @Entity
 public class Sessions {
 

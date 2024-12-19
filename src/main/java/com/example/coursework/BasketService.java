@@ -2,9 +2,12 @@ package com.example.coursework;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
+/**
+ * Сервисный класс для управления корзиной покупок.
+ * Предоставляет методы для выполнения CRUD операций над объектами Basket.
+ */
 @Service
 public class BasketService {
     @Autowired
@@ -22,5 +25,7 @@ public class BasketService {
         repo.deleteById(id);
     }
 
-    public void deletebyuser(String username){repo.deletebyuser(username);}
+    public void deletebyuser(String username){
+        repo.deletebyuser(username);
+    }
 }

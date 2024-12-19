@@ -4,6 +4,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired; //Для сбора классов-бинсов
 import org.springframework.stereotype.Service; //Для обнаружения зависимостей
 
+/**
+ * Сервисный класс для управления фильмами.
+ * Предоставляет методы для выполнения CRUD операций над объектами Films.
+ */
 @Service
 public class FilmsService {
     @Autowired

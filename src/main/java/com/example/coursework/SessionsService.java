@@ -2,10 +2,12 @@ package com.example.coursework;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-
+/**
+ * Сервисный класс для управления сеансами.
+ * Предоставляет методы для выполнения CRUD операций над объектами Sessions.
+ */
 @Service
 public class SessionsService {
     @Autowired

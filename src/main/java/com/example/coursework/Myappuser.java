@@ -2,6 +2,10 @@ package com.example.coursework;
 
 import jakarta.persistence.*;
 
+/**
+ * Сущность Myappuser - пользователь.
+ * Включает информацию о логине пользователя, его почте, пароле и роли.
+ */
 @Entity
 public class Myappuser {
 
@@ -21,11 +25,9 @@ public class Myappuser {
 
     protected Myappuser(){}
 
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -33,7 +35,6 @@ public class Myappuser {
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -41,7 +42,6 @@ public class Myappuser {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -49,7 +49,6 @@ public class Myappuser {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -57,7 +56,6 @@ public class Myappuser {
     public String getRole() {
         return role;
     }
-
     public void setRole(String role) {
         this.role = role;
     }
