@@ -85,7 +85,6 @@
 </head>
 
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -127,7 +126,6 @@
         </div>
     </div>
 </nav>
-
 <div class="row">
     <div class="col-md-9 offset-md-1">
         <br>
@@ -140,12 +138,10 @@
         </form>
     </div>
 </div>
-
 <div sec:authorize="hasAnyRole('ADMIN','SUPERADMIN', 'STAFF')" onclick="openMe1()"
      style="text-align: center; margin-bottom: 20px;">
     <a class="btn btn-primary">Добавить</a>
 </div>
-
 <th>
     <dialog id="carDialog">
         <form action="#" th:action="@{'/save1'}" method="post" enctype="multipart/form-data">
@@ -182,10 +178,8 @@
                     </td>
                 </tr>
             </table>
-
         </form>
     </dialog>
-
     <script>
         function openMe(id) {
             var req = new XMLHttpRequest();
@@ -205,7 +199,6 @@
             };
             req.send();
         }
-
 
         function openMe1() {
             var req = new XMLHttpRequest();
@@ -231,12 +224,9 @@
         }
     </script>
 </th>
-
-
 <div class="count-container">
     <p>Количество фильмов: <span th:text="${filmsList.size()}"></span></p>
 </div>
-
 <div class="container">
     <div th:each="film : ${filmsList}" class="film-container">
         <img th:src="'data:image/jpeg;base64,' + ${film.imageBase64}" alt="Image">
@@ -255,7 +245,6 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
     function clearSearch() {
         window.location = "[[@{/}]]";
@@ -265,11 +254,14 @@
         return confirm('Вы уверены, что хотите удалить этот фильм? Это действие нельзя отменить.');
     }
 </script>
+
 <footer class="bg-dark text-white py-4">
         <div class="text-center mt-4">
             <p> Информационная система направлена на бронирование билетов в кинотеатре  |  Разработчик: Ермолаева Диана Евгеньевна</p>
         </div>
     </div>
 </footer>
+
 </body>
+
 </html>

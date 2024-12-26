@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,6 +61,7 @@
         }
     </style>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -152,6 +154,7 @@
             };
             req.send();
         }
+
         function openMe2() {
             var req = new XMLHttpRequest();
             req.open("GET", "/new2", true);
@@ -168,6 +171,7 @@
             };
             req.send();
         }
+
         function closeDialog() {
             document.getElementById('carDialog').close();
         }
@@ -185,7 +189,8 @@
         </form>
     </div>
 </div>
-<div sec:authorize="hasAnyRole('ADMIN','SUPERADMIN', 'STAFF')" onclick="openMe2()" style="text-align: center; margin-bottom: 20px;">
+<div sec:authorize="hasAnyRole('ADMIN','SUPERADMIN', 'STAFF')" onclick="openMe2()"
+     style="text-align: center; margin-bottom: 20px;">
     <a class="btn btn-primary">Добавить</a>
 </div>
 <div class="count-container">
@@ -198,7 +203,9 @@
             <div class="col-md-3"><strong>Название</strong></div>
             <div class="col-md-3"><strong>Дата</strong></div>
             <div class="col-md-2"><strong>Цена
-                <a th:href="@{'/sort'}"><button type="button" class="btn btn-outline-secondary" style="color: white;">⇅</button></a>
+                <a th:href="@{'/sort'}">
+                    <button type="button" class="btn btn-outline-secondary" style="color: white;">⇅</button>
+                </a>
             </strong></div>
             <div class="col-md-2"><strong>Количество</strong></div>
         </div>
@@ -213,28 +220,33 @@
             <div class="col-md-2 d-flex justify-content-between align-items-center">
                 <span th:text="${sessions.quantity}"></span>
                 <div sec:authorize="hasAnyRole('ADMIN','SUPERADMIN', 'STAFF')" style="display: inline;">
-                    <a th:data-id="${sessions.id}" onclick="openMe3(this.getAttribute('data-id'))"><button type="button" class="btn btn-primary btn-sm">🔧</button></a>
-                    <form th:action="@{'/deletesessions/'+${sessions.id}}" method="post" onsubmit="return confirmDelete()" style="display: inline;">
+                    <a th:data-id="${sessions.id}" onclick="openMe3(this.getAttribute('data-id'))">
+                        <button type="button" class="btn btn-primary btn-sm">🔧</button>
+                    </a>
+                    <form th:action="@{'/deletesessions/'+${sessions.id}}" method="post"
+                          onsubmit="return confirmDelete()" style="display: inline;">
                         <button type="submit" class="btn btn-outline-danger btn-sm">🗑</button>
                     </form>
                 </div>
             </div>
             <div class="col-md-2" sec:authorize="hasAnyRole('USER')" th:if="${sessions.quantity >= 1}">
-                <a th:href="@{'/addtocart/' + ${sessions.id}}"><button type="button" class="btn btn-primary">🛒</button></a>
+                <a th:href="@{'/addtocart/' + ${sessions.id}}">
+                    <button type="button" class="btn btn-primary">🛒</button>
+                </a>
             </div>
         </div>
         <br>
     </div>
 </div>
-        <script type="text/javascript">
-            function confirmDelete() {
-                return confirm('Вы уверены, что хотите удалить этот сеанс? Это действие нельзя отменить.');
-            }
-        </script>
-        </td>
-    </tr>
-    </tbody>
-    </table>
+<script type="text/javascript">
+    function confirmDelete() {
+        return confirm('Вы уверены, что хотите удалить этот сеанс? Это действие нельзя отменить.');
+    }
+</script>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <script type="text/javascript">
     function clearSearch() {
@@ -242,4 +254,5 @@
     }
 </script>
 </body>
+
 </html>
